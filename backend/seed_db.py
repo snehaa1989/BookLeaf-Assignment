@@ -9,7 +9,7 @@ from app.config import settings
 from app.security import hash_password
 
 
-DATA_PATH = Path("seed/authors_books.json")
+DATA_PATH = Path(__file__).resolve().parent / "seed" / "authors_books.json"
 
 
 def parse_date(value):

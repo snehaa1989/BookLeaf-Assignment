@@ -11,6 +11,12 @@ from app.routers.admin import router as admin_router
 
 Base.metadata.create_all(bind=engine)
 
+# Run database seeding only when explicitly enabled.
+if os.getenv("RUN_DB_SEED_ON_STARTUP", "false").lower() == "true":
+    from seed_db import seed_database
+
+    seed_database()
+
 app = FastAPI(
     title="BookLeaf Author Support Portal",
     description="Author and Admin Support Communication API",
