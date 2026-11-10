@@ -1,5 +1,3 @@
-version: '3.8'
-
 services:
   db:
     image: postgres:16-alpine
@@ -23,6 +21,8 @@ services:
       context: ./backend
       dockerfile: Dockerfile
     container_name: bookleaf-backend
+    env_file:
+      - .env
     environment:
       DATABASE_URL: postgresql://bookleaf:bookleaf_password@db:5432/bookleaf
       JWT_SECRET_KEY: ${JWT_SECRET_KEY:-change-this-secret-key}
@@ -32,7 +32,7 @@ services:
       ADMIN_PASSWORD: ${ADMIN_PASSWORD:-Admin@123}
       SEEDED_AUTHOR_PASSWORD: BookLeaf@123
       GEMINI_API_KEY: ${GEMINI_API_KEY}
-      ALLOWED_ORIGINS: ${ALLOWED_ORIGINS:-http://localhost:5173,http://localhost:80}
+      ALLOWED_ORIGINS: ${ALLOWED_ORIGINS:-http://localhost:5173,http://localhost:8080,http://127.0.0.1:5173,http://127.0.0.1:8080}
     ports:
       - "8000:8000"
     depends_on:
@@ -52,7 +52,7 @@ services:
       dockerfile: Dockerfile
     container_name: bookleaf-frontend
     ports:
-      - "80:80"
+      - "8080:80"
     depends_on:
       - backend
 

@@ -1,0 +1,50 @@
+services:
+  # PostgreSQL Database
+  - type: pserv
+    name: bookleaf-db
+    databaseName: bookleaf
+    user: bookleaf
+    plan: free
+    region: oregon
+
+  # Backend API
+  - type: web
+    name: bookleaf-backend
+    env: docker
+    plan: free
+    region: oregon
+    dockerfilePath: ./backend/Dockerfile
+    dockerContext: .
+    envVars:
+      - key: DATABASE_URL
+        fromDatabase:
+          name: bookleaf-db
+          property: connectionString
+      - key: JWT_SECRET_KEY
+        generateValue: true
+      - key: JWT_ALGORITHM
+        value: HS256
+      - key: ACCESS_TOKEN_EXPIRE_MINUTES
+        value: 60
+      - key: ADMIN_EMAIL
+        value: admin@bookleaf.com
+      - key: ADMIN_PASSWORD
+        generateValue: true
+      - key: SEEDED_AUTHOR_PASSWORD
+        generateValue: true
+      - key: GEMINI_API_KEY
+        sync: false
+      - key: ALLOWED_ORIGINS
+        value: https://bookleaf-frontend.onrender.com
+
+  # Frontend
+  - type: web
+    name: bookleaf-frontend
+    env: docker
+    plan: free
+    region: oregon
+    dockerfilePath: ./frontend/Dockerfile
+    dockerContext: .
+    envVars:
+      - key: VITE_API_URL
+        value: https://bookleaf-backend.onrender.com
