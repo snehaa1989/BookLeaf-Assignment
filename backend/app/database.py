@@ -1,20 +1,26 @@
 
 import os
+
 from sqlalchemy import create_engine
 from sqlalchemy.orm import DeclarativeBase, sessionmaker
 
-DATABASE_URL = os.getenv(
-    "DATABASE_URL",
-    "sqlite:///./bookleaf.db"
-)
 
-if DATABASE_URL.startswith("sqlite"):
-    engine = create_engine(
-        DATABASE_URL,
-        connect_args={"check_same_thread": False},
+DATABASE_URL = os.getenv("DATABASE_URL")
+
+if not DATABASE_URL:
+    raise RuntimeError(
+        "DATABASE_URL environment variable is missing."
     )
-else:
-    engine = create_engine(DATABASE_URL)
+
+if not DATABASE_URL.startswith("postgresql"):
+    raise RuntimeError(
+        "Production application requires PostgreSQL."
+    )
+
+engine = create_engine(
+    DATABASE_URL,
+    pool_pre_ping=True,
+)
 
 SessionLocal = sessionmaker(
     bind=engine,
