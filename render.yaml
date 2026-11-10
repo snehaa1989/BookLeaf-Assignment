@@ -6,7 +6,7 @@ services:
     plan: free
     region: oregon
     dockerfilePath: ./backend/Dockerfile
-    dockerContext: .
+    dockerContext: ./backend
     envVars:
       - key: DATABASE_URL
         fromDatabase:
@@ -34,7 +34,7 @@ services:
     plan: free
     region: oregon
     dockerfilePath: ./frontend/Dockerfile
-    dockerContext: .
+    dockerContext: ./frontend
     envVars:
       - key: VITE_API_URL
         value: https://bookleaf-backend.onrender.com

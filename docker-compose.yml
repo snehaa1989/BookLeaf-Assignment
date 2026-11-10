@@ -33,6 +33,7 @@ services:
       SEEDED_AUTHOR_PASSWORD: BookLeaf@123
       GEMINI_API_KEY: ${GEMINI_API_KEY}
       ALLOWED_ORIGINS: ${ALLOWED_ORIGINS:-http://localhost:5173,http://localhost:8080,http://127.0.0.1:5173,http://127.0.0.1:8080}
+      RELOAD: true
     ports:
       - "8000:8000"
     depends_on:
@@ -40,11 +41,7 @@ services:
         condition: service_healthy
     volumes:
       - ./backend:/app
-    command: >
-      sh -c "
-        python -c 'from app.database import engine; from app import models; from app.database import Base; Base.metadata.create_all(bind=engine)' &&
-        uvicorn app.main:app --host 0.0.0.0 --port 8000 --reload
-      "
+    command: ./start.sh
 
   frontend:
     build:
