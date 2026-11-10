@@ -7,6 +7,7 @@ from app.routers.tickets import router as tickets_router
 from app.database import Base, engine
 from app import models
 from app.routers.auth import router as auth_router
+from app.routers.admin import router as admin_router
 
 Base.metadata.create_all(bind=engine)
 
@@ -31,6 +32,7 @@ app.add_middleware(
 )
 
 app.include_router(auth_router)
+app.include_router(admin_router)
 app.include_router(books_router)
 app.include_router(tickets_router)
 @app.get("/")
