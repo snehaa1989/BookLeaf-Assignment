@@ -49,8 +49,8 @@ The BookLeaf Author Support & Communication Portal demonstrates how a full-stack
 
 ### 6. Admin and Author Password
 
-Kindly login on live portal (https://bookleaf-frontend-9qfl.onrender.com/)  with these credentials
-Admin Email : admin@bookleaf.com
-Admin Password : riuwggwjkgngnvojondvnk
-Author Email : Given in backend/seed/authors_books.json
+Kindly login on live portal (https://bookleaf-frontend-9qfl.onrender.com/)  with these credentials : 
+Admin Email : admin@bookleaf.com, 
+Admin Password : riuwggwjkgngnvojondvnk, 
+Author Email : Given in backend/seed/authors_books.json, 
 Author Password : eioahfafnadofmkadnvn
