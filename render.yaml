@@ -25,7 +25,7 @@ services:
       - key: SEEDED_AUTHOR_PASSWORD
         generateValue: true
       - key: ALLOWED_ORIGINS
-        value: https://bookleaf-frontend.onrender.com
+        value: https://bookleaf-frontend-9qfl.onrender.com
 
   # Frontend
   - type: web
