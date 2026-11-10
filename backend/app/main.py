@@ -11,11 +11,13 @@ from app.routers.admin import router as admin_router
 
 Base.metadata.create_all(bind=engine)
 
-# Run database seeding only when explicitly enabled.
-if os.getenv("RUN_DB_SEED_ON_STARTUP", "false").lower() == "true":
-    from seed_db import seed_database
+# Run password synchronization only when explicitly enabled.
+if os.getenv(
+    "RUN_PASSWORD_SYNC_ON_STARTUP", "false"
+).lower() == "true":
+    from sync_passwords import sync_passwords
 
-    seed_database()
+    sync_passwords()
 
 app = FastAPI(
     title="BookLeaf Author Support Portal",
