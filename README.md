@@ -46,3 +46,11 @@ To evolve the application into a production-grade platform, the next priorities 
 ### 5. Conclusion
 
 The BookLeaf Author Support & Communication Portal demonstrates how a full-stack application can combine structured support workflows with practical AI assistance. The implementation focuses on usability, access control, administrative efficiency, and human-supervised automation. Its modular architecture provides a foundation for evolving the assignment prototype into a scalable, secure, and maintainable production support platform.
+
+### 6. Admin and Author Password
+
+Kindly login on live portal (https://bookleaf-frontend-9qfl.onrender.com/)  with these credentials
+Admin Email : admin@bookleaf.com
+Admin Password : riuwggwjkgngnvojondvnk
+Author Email : Given in backend/seed/authors_books.json
+Author Password : eioahfafnadofmkadnvn
