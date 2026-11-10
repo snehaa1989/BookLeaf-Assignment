@@ -17,15 +17,13 @@ services:
       - key: JWT_ALGORITHM
         value: HS256
       - key: ACCESS_TOKEN_EXPIRE_MINUTES
-        value: 60
+        value: "60"
       - key: ADMIN_EMAIL
         value: admin@bookleaf.com
       - key: ADMIN_PASSWORD
         generateValue: true
       - key: SEEDED_AUTHOR_PASSWORD
         generateValue: true
-      - key: GEMINI_API_KEY
-        sync: false
       - key: ALLOWED_ORIGINS
         value: https://bookleaf-frontend.onrender.com
 
