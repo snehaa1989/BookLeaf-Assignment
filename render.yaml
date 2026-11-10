@@ -1,12 +1,4 @@
 services:
-  # PostgreSQL Database
-  - type: pserv
-    name: bookleaf-db
-    databaseName: bookleaf
-    user: bookleaf
-    plan: free
-    region: oregon
-
   # Backend API
   - type: web
     name: bookleaf-backend
@@ -48,3 +40,11 @@ services:
     envVars:
       - key: VITE_API_URL
         value: https://bookleaf-backend.onrender.com
+
+databases:
+  # PostgreSQL Database
+  - name: bookleaf-db
+    databaseName: bookleaf
+    user: bookleaf
+    plan: free
+    region: oregon
